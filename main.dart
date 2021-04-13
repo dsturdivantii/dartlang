@@ -7,14 +7,15 @@ import "dart:io";
 
 void main() {
  
-final baaccount= Bankacc();
 
+double addbal = 0;
  String name;
  String accname = 'Doug Sturdivant';
  int accnumber = 10001;
- double accbalance = 1000.00;
+ double accbalance = 1000.25;
 double deposit = 200.75;
 double withdraw = 0.00;
+final baaccount= Bankacc(name: accname, accnumber: accnumber,accbalance: accbalance );
 print(' Welcome to console bank ');
 print('What would you like to do?');
 print('V)iew Balance, D)eposit Money, or W)ithdraw Money,and E)xit');
@@ -27,6 +28,8 @@ String name = stdin.readLineSync();
 if(name == "V") {
   // View balance
   print(currentbal(accbalance, 0.00));
+ print(baaccount.accbalance);
+
 } else if(name == "D") {
   // Deposit Money
   print("Deposit Amount");
@@ -36,7 +39,12 @@ deposit = double.parse(deposit1);
 
 print(addtoaccount(accbalance,deposit));
 accbalance = accbalance + deposit;
-baaccount.accbalance=accbalance;
+
+  
+
+print(addbal);
+
+
 }
 
 if(name == "W") {
@@ -46,8 +54,8 @@ withdraw = double.parse(withdraw1);
 if (withdraw>accbalance) { print(notsuffientfunds());} else print(subaccount(accbalance,-withdraw));
 
 accbalance = accbalance - withdraw;
-baaccount.accbalance=accbalance;
 
+sub1account();
 
 }}
   print(notsuffientfunds());
@@ -66,7 +74,7 @@ String subaccount(double accbalance,double deposit)
 {
 double total1=accbalance+deposit;
 return 'Money successfully withdrawn - balance is $total1 ';
-print(Bankacc.toString());
+
 }
 String addtoaccount(double accbalance, double deposit) {
 double total1=accbalance+deposit;
